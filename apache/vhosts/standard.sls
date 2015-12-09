@@ -30,6 +30,41 @@ include:
     - allow_symlink: True
 {% endif %}
 
+# Create the certificate files if the contents is provided
+{% if site.get('SSLCertificate') and site.get('SSLCertificateFile') %}
+{{ site['SSLCertificateFile'] }}:
+  file.managed:
+    - contents: |-
+        {{ site['SSLCertificate']|indent(8) }}
+    - user: root
+    - group: root
+    - watch_in:
+      - module: apache-reload
+{% endif %}
+
+{% if site.get('SSLCertificateKey') and site.get('SSLCertificateKeyFile') %}
+{{ site['SSLCertificateKeyFile'] }}:
+  file.managed:
+    - contents: |
+        {{ site['SSLCertificateKey']|indent(8) }}
+    - mode: 600
+    - user: root
+    - group: root
+    - watch_in:
+      - module: apache-reload
+{% endif %}
+
+{% if site.get('SSLCertificateChain') and site.get('SSLCertificateChainFile') %}
+{{ site['SSLCertificateChainFile'] }}:
+  file.managed:
+    - contents: |
+        {{ site['SSLCertificateChain']|indent(8) }}
+    - user: root
+    - group: root
+    - watch_in:
+      - module: apache-reload
+{% endif %}
+
 {% if grains.os_family == 'Debian' %}
 {% if site.get('enabled', True) %}
 a2ensite {{ id }}{{ apache.confext }}:

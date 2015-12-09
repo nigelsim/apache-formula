@@ -55,6 +55,26 @@ apache:
       SSLCertificateKeyFile: /etc/ssl/mycert.pem.key # if key for cert is needed or in an extra file
       SSLCertificateChainFile: /etc/ssl/mycert.chain.pem # if you require a chain of server certificates file
 
+      SSLCertificate: | # SSL cert can optionally be provided inline (requires SSLCertificateFile)
+        -----BEGIN CERTIFICATE-----
+        MIIGXTCCBUWgAwIBAgIQWBUZDv82wA9KZchbBQRHQDANBgkqhkiG9w0BAQsFADCB
+        ...
+        ew==
+        -----END CERTIFICATE-----
+      SSLCertificateKey: | # SSL key can optionally be provided inline (requires SSLCertificateKeyFile)
+        -----BEGIN RSA PRIVATE KEY-----
+        MIIGXTCCBUWgAwIBAgIQWBUZDv82wA9KZchbBQRHQDANBgkqhkiG9w0BAQsFADCB
+        ...
+        ew==
+        -----END RSA PRIVATE KEY-----
+      SSLCertificateChain: | # SSL cert chain can optionally be provided inline (requires SSLCertificateChainFile)
+        -----BEGIN CERTIFICATE-----
+        MIIGXTCCBUWgAwIBAgIQWBUZDv82wA9KZchbBQRHQDANBgkqhkiG9w0BAQsFADCB
+        ...
+        ew==
+        -----END CERTIFICATE-----
+
+
       Directory:
         # "default" is a special case; Adds ``/path/to/www/dir/example.com``
         # E.g.: /var/www/example.com
