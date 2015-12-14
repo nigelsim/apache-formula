@@ -135,3 +135,7 @@ apache:
       - ssl
     disabled:  # List modules to disable
       - rewrite
+
+  conf_files_contents:
+    dav.conf: | 
+      DAVLockDB /var/lib/dav/lockdb
