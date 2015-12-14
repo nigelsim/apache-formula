@@ -55,6 +55,8 @@
     {% if site.get('DocumentRoot') != False -%}DocumentRoot {{ vals.DocumentRoot }}{% endif %}
     {% if site.get('VirtualDocumentRoot') -%}VirtualDocumentRoot {{ vals.VirtualDocumentRoot }}{% endif %}
 
+    {% if site.get('DavLockDB') %}DavLockDB {{ site.DavLockDB }}{% endif %}
+
     {%- if site.get('SSLCertificateFile') %}
     SSLEngine on
     SSLCertificateFile {{ site.SSLCertificateFile }}
