@@ -393,6 +393,16 @@ AddDefaultCharset UTF-8
     MIMEMagicFile conf/magic
 </IfModule>
 
+{% if apache.get('davlockdb') %}
+#
+# WebDAV module configuration section.
+# 
+<IfModule mod_dav_fs.c>
+    # Location of the WebDAV lock database.
+    DAVLockDB {{ apache.davlockdb }}
+</IfModule>
+{% endif %}
+
 #
 # Customizable error responses come in three flavors:
 # 1) plain text 2) local redirects 3) external redirects
