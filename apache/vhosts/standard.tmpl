@@ -89,6 +89,7 @@
         {% else %}
         {% if dvals.get('Order') != False %}Order {{ dvals.Order }}{% endif %}
         {% if dvals.get('Allow') != False %}Allow {{ dvals.Allow }}{% endif %}
+        {% if dir.get('Satisfy') != False %}Satisfy {{ dir.Satisfy }}{% endif %}
         {% endif %}
         {% if dvals.get('AllowOverride') != False %}AllowOverride {{ dvals.AllowOverride }}{% endif %}
         {% if dvals.get('Dav') != False %}Dav On{% endif %}
@@ -113,6 +114,7 @@
         {% else %}
         {% if lvals.get('Order') != False %}Order {{ lvals.Order }}{% endif %}
         {% if lvals.get('Allow') != False %}Allow {{ lvals.Allow }}{% endif %}
+        {% if loc.get('Satisfy') %}Satisfy {{ loc.get('Satisfy') }}{% endif %}
         {% endif %}
         {% if lvals.get('Dav') != False %}Dav On{% endif %}
 
